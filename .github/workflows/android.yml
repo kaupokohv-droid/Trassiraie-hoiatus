@@ -25,6 +25,10 @@ jobs:
           gradle-version: '8.9'
       - name: Build APK
         run: gradle --version && gradle assembleDebug --stacktrace
+      - name: Kontrolli APK allkirja
+        run: |
+          APK=$(find app/build/outputs/apk/debug -name "*.apk" | head -1)
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose --print-certs "$APK"
       - uses: actions/upload-artifact@v4
         with:
           name: Trassihoiatus-APK
