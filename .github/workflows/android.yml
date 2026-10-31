@@ -24,7 +24,7 @@ jobs:
         with:
           gradle-version: '8.9'
       - name: Build APK
-        run: gradle assembleDebug --stacktrace
+        run: gradle --version && gradle assembleDebug --stacktrace
       - uses: actions/upload-artifact@v4
         with:
           name: Trassihoiatus-APK
